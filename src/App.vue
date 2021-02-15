@@ -1,21 +1,17 @@
 <template>
   <div id="app">
-    <tab-bar>
-      <tab-bar-item></tab-bar-item>
-      <tab-bar-item></tab-bar-item>
-      <tab-bar-item></tab-bar-item>
-      <tab-bar-item></tab-bar-item>
-    </tab-bar>
+    <router-view></router-view>
+    <main-tab-bar></main-tab-bar>
   </div>
 </template>
 <script>
 
-import TabBar from './components/TabBar/tabbar'
-import TabBarItem from './components/TabBar/tabbarItem'
+
+import MainTabBar from './components/TabBar/maintabbar'
 export default {
   components: {
-    TabBar,
-    TabBarItem
+    MainTabBar
+
   }
 }
 </script>
