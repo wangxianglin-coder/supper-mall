@@ -1,6 +1,6 @@
 <template>
   <div id="main_tab_bar">
-     <tab-bar>
+     <tab-bar class="main_bar">
         <tab-bar-item path="/home">
           <img slot="img" src="../../assets/img/tabbar/index.svg">
           <img slot="img-active" src="../../assets/img/tabbar/index-active.svg">
@@ -40,5 +40,4 @@ export default {
 </script>
 
 <style>
-
 </style>

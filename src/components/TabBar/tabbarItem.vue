@@ -37,7 +37,7 @@ export default {
   height: 49px;
 }
 .tab_bar_item img {
-  margin-top: 2px;
+  margin-top: 5px;
   width: 29px;
   height: 29px;
   vertical-align: middle;
