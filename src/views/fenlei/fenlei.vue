@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wrapper">
+    <div class="wrapper" ref="aaa">
       <ul class="content">
         <li>内容1</li>
         <li>内容2</li>
@@ -112,14 +112,14 @@ import BScroll from '@better-scroll/core'
 export default {
   mounted() {
 
-    let bs =  new BScroll('.wrapper',{})
+    let bs =  new BScroll(this.$refs.aaa,{})
   },
 }
 </script>
 
-<style>
+<style scoped>
 .wrapper{
-  height: 150px;
+  height: 300px;
   background-color: red;
   overflow: hidden;
 }

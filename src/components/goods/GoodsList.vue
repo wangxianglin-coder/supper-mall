@@ -27,6 +27,7 @@ export default {
 .goods_list{
   margin-top: 10px;
   display: flex;
+  /* 超出屏幕宽度就换行 */
   flex-wrap: wrap;
   justify-content: space-around;
 
