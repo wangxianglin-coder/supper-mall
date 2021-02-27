@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .goods_list{
   margin-top: 10px;
   display: flex;

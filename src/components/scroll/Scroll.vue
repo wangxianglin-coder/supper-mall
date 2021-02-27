@@ -29,8 +29,9 @@ export default {
      observeDOM: true,
      click: true,
      probeType: this.probeType,
-    pullUpLoad: this.pullingUp
+     pullUpLoad: this.pullingUp
     }),
+    this.scroll.refresh()
     // 监听实时位置
     this.scroll.on("scroll",position => {
       this.$emit("scrollHight",position)
@@ -39,7 +40,6 @@ export default {
     this.scroll.on('pullingUp', () => {
       this.$emit('pullingUp')
     })
-
   },
   methods: {
 
@@ -47,10 +47,11 @@ export default {
     scrollTo(x,y,time=500){
       this.scroll.scrollTo(x,y,time)
     },
-    // 重复上拉加载方法
+    // 上拉加载完成
     finishPullUp(){
       this.scroll.finishPullUp()
-    }
+      this.scroll.refresh()
+    },
   },
 }
 </script>

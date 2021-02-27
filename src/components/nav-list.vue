@@ -37,10 +37,8 @@ export default {
 .nav_list {
   display: flex;
   text-align: center;
-  margin-top: 10px;
-  top: 44px;
   padding: 5px;
-  z-index: 8;
+
 }
 .nav_list_item{
   flex: 1;

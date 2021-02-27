@@ -4,6 +4,8 @@ const home = () => import('../views/home/home.vue')
 const fenlei = () => import('../views/fenlei/fenlei.vue')
 const gouwu = () => import('../views/gouwu/gouwu.vue')
 const me = () => import('../views/me/me.vue')
+const Detail = () => import('../views/detail/Detail')
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,6 +28,13 @@ const routes = [
   {
     path: '/me',
     component: me
+  },
+  {
+    path: '/detail/:iid',
+    component: Detail,
+    meta: {
+      keepAlive: false
+    }
   },
 ]
 const router = new VueRouter({

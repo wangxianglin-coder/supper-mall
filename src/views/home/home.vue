@@ -3,8 +3,14 @@
     <nav-bar class="home_nav">
       <div slot="center">购物街</div>
     </nav-bar>
+     <nav-list :titles="['推荐','流行','精品']" class="tab_con"
+      @tabClick='tabClick'
+      ref="navlist1"
+      v-show="isNavlistFixed"/>
+
+
     <scroll class="content" ref="scroll"
-    :probeType='3'
+    :probeType='5'
      @scrollHight="backTopShow"
      :pullingUp="true"
      @pullingUp='loadMore'>
@@ -12,10 +18,12 @@
       <recommend :recommends="recommends"></recommend>
       <center-nav></center-nav>
       <nav-list :titles="['推荐','流行','精品']" class="tab_con"
-      @tabClick='tabClick' />
+      @tabClick='tabClick'
+      ref="navlist2"/>
       <goods-list :goods="goods[currentType].list" />
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
+
   </div>
 </template>
 
@@ -59,7 +67,10 @@ export default {
         sell:{page: 0, list: []},
       },
       currentType: 'pop',
-      isShowBackTop: false
+      isShowBackTop: false,
+      navOffsetTop: 0,
+      isNavlistFixed: false,
+      saveY: 0
     }
   },
   created() {
@@ -70,6 +81,7 @@ export default {
     this.getHomeGoods("new")
     this.getHomeGoods("sell")
   },
+
   methods: {
     // 事件监听
     tabClick(index){
@@ -84,13 +96,22 @@ export default {
           this.currentType = 'sell'
           break
       }
+        this.$refs.navlist1.num = index
+        this.$refs.navlist2.num = index
     },
     backClick(){
 
       this.$refs.scroll.scrollTo(0,0)
     },
-    backTopShow(position){
+
+      backTopShow(position){
+      // 监听backTop的显示
       this.isShowBackTop = (-position.y) > 1000
+      // 监听navlist吸顶
+      this.isNavlistFixed = (-position.y) > this.$refs.navlist2.$el.offsetTop
+
+      // this.saveY = position.y
+      // console.log(this.saveY)
      },
     //  上拉加载
     loadMore(){
@@ -110,7 +131,8 @@ export default {
       return  getHomeGoods(type,page).then(res => {
       this.goods[type].list.push(...res.data.list)
       this.goods[type].page = page
-      this.$refs.scroll.finishPullUp()
+      // 完成上拉加载更多
+         this.$refs.scroll.finishPullUp()
     })
     },
 
@@ -126,11 +148,12 @@ export default {
 }
 .home_nav{
 background-color: var(--color-tint);
+color: #fff;
 }
 .tab_con{
-  position: sticky;
-  top: 44px;
   background-color: #fff;
+  position: relative;
+  z-index: 8;
 }
 /* .content{
   height: calc(100% - 93px);
@@ -145,5 +168,6 @@ background-color: var(--color-tint);
   right: 0;
   overflow: hidden;
 }
+
 
 </style>

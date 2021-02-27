@@ -1,5 +1,5 @@
 <template>
-  <div class="goods_item">
+  <div class="goods_item" @click="toDetail">
     <img :src="goodsItem.show.img" alt="">
     <div class="item_text">
       <p>{{goodsItem.title}}</p>
@@ -18,11 +18,16 @@ export default {
         return {}
       }
     }
-  }
+  },
+  methods: {
+    toDetail(){
+      this.$router.push("/detail/" + this.goodsItem.iid)
+    }
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .goods_item{
   padding-bottom: 40px;
   position: relative;
