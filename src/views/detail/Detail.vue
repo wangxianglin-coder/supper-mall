@@ -18,6 +18,8 @@
 
 
     <detail-bottom-bar @toAddCart="addCart"></detail-bottom-bar>
+
+    <!-- <toast /> -->
     <!-- <ul>
     <li>1</li>
     <li>2</li>
@@ -35,7 +37,7 @@
 </template>
 
 <script>
-
+// import Toast from '../../components/toast/Toast'
 
 import DetailNavBar from './childNavBar/DetailNavBar'
 import DetailSwiper from './childNavBar/DetailSwiper'
@@ -65,7 +67,8 @@ components: {
   DetailCommontInfo,
   DetailRecommend,
   Scroll,
-  DetailBottomBar
+  DetailBottomBar,
+  // Toast
 
 
 },
@@ -170,7 +173,11 @@ methods: {
 
     // 将商品添加到购物车
     // this.$store.commit("addCart",wares)
-    this.$store.dispatch('addCart',wares)
+    this.$store.dispatch('addCart',wares).then(res => {
+
+      // console.log(this.$toast.isShow())
+      this.$toast.isShow(res,1000)
+    })
   }
 
 },

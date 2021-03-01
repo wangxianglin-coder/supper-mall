@@ -4,7 +4,7 @@
       <div slot="center">购物车({{cartLength}})</div>
     </nav-bar>
     <cart-list></cart-list>
-    <cart-buttom-bar></cart-buttom-bar>
+    <cart-buttom-bar :cart-list="getCartList"></cart-buttom-bar>
   </div>
 </template>
 
@@ -20,8 +20,8 @@ export default {
     CartList,
     CartButtomBar
   },
-  compute:{
-    ...mapGetters(["cartLength"])
+  computed:{
+    ...mapGetters(['cartLength','getCartList'])
   }
 }
 </script>

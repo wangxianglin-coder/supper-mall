@@ -44,6 +44,9 @@ export default {
 <style scoped>
 .item{
   display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
 }
 .check{
 
@@ -62,7 +65,7 @@ margin: 43px 2px;
 .right-item{
   flex: 1;
   position: relative;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 .title{
   position: absolute;
